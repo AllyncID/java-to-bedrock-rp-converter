@@ -2,12 +2,23 @@ name: Conversion Request
 on:
   issues:
     types:
+      - opened
+      - reopened
       - labeled
+
+concurrency:
+  group: conversion-request-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 jobs:
   get-pack-info:
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'conversion'
+    if: >-
+      (github.event.action == 'labeled' && github.event.label.name == 'conversion') ||
+      ((github.event.action == 'opened' || github.event.action == 'reopened') &&
+      !contains(github.event.issue.labels.*.name, 'conversion') &&
+      startsWith(github.event.issue.title, '[Pack]:') &&
+      contains(github.event.issue.body, '### Java Pack Direct Download URL'))
     permissions: 
       issues: read
     timeout-minutes: 2
