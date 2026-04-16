@@ -1,6 +1,10 @@
 # Java Resource Pack Converter (Fork)
 
-Maintained by **Allync**.
+Fork maintained by **AllyncID**.
+Original project and core converter credit: [Kas-tle/java2bedrock.sh](https://github.com/Kas-tle/java2bedrock.sh)
+
+[![Open Pack Conversion Form](https://img.shields.io/badge/Convert%20Pack-Open%20Issue%20Form-2ea44f?style=for-the-badge)](https://github.com/AllyncID/java-to-bedrock-rp-converter/issues/new?assignees=&labels=conversion&template=pack-conversion.yml&title=%5BPack%5D%3A+)
+[![View Conversion Workflow](https://img.shields.io/badge/Workflow-Conversion%20Runs-0969da?style=for-the-badge)](https://github.com/AllyncID/java-to-bedrock-rp-converter/actions/workflows/conversion-request.yml)
 
 ## Fixes in This Fork
 
@@ -58,17 +62,21 @@ If you prepare 2D sprites for your 3D models, you can provide the converter with
 }
 ```
 
-When utilizing this feature, you should also use the merge feature to combine the converted pack with an existing Bedrock resource pack containing the specified sprite textures. If using the Github Actions based converter, simply provide a direct download URL of said Bedrock resource pack as done for the Java pack.
+When utilizing this feature, you should also use the merge feature to combine the converted pack with an existing Bedrock resource pack containing the specified sprite textures. If using the GitHub Actions based converter, simply provide a direct download URL of said Bedrock resource pack as done for the Java pack.
 
-### Github Actions
+### GitHub Actions
 
-You may also run the converter through Github Actions in this repository by creating an issue with the [Pack Conversion](https://github.com/Kas-tle/java2bedrock.sh/issues/new?assignees=&labels=conversion&template=pack-conversion.yml&title=%5BPack%5D%3A+) template. You are only required to enter the link to the Java pack, though the options described above may also be configured. Your pack will then be queued for conversion by Github Actions. After conversion is complete, the Github Actions bot will reply to your issue with a link to download your converted pack and associated mappings file. Included in the bundle is a behavior pack and addon to view the models in single player, as well as a configuration file containing the paths to the models converted from the Java resource pack and their corresponding identifiers in the Bedrock resource pack.
+You may also run the converter through GitHub Actions in this repository by opening the [Pack Conversion issue form](https://github.com/AllyncID/java-to-bedrock-rp-converter/issues/new?assignees=&labels=conversion&template=pack-conversion.yml&title=%5BPack%5D%3A+). You are only required to enter the direct link to the Java pack, though the options described above may also be configured. Your pack will then be queued for conversion by the repository workflow.
+
+If you want to monitor queued or completed conversions, check the [conversion workflow page](https://github.com/AllyncID/java-to-bedrock-rp-converter/actions/workflows/conversion-request.yml). After conversion is complete, the GitHub Actions bot will reply to your issue with a link to download your converted pack and associated mappings file. Included in the bundle is a behavior pack and addon to view the models in single player, as well as a configuration file containing the paths to the models converted from the Java resource pack and their corresponding identifiers in the Bedrock resource pack.
 
 ## About
 
 **NOTICE:** Due to [MCPE-152191](https://bugs.mojang.com/browse/MCPE-152191), any blocks that are larger than 1.9 blocks will not load. This is only relavent to those using the preview pack to display converted models in single player.
 
 The script has been updated to handle parent models and 2D items. It will generate multiple sprite sheets for 3D models without repeating the inclusion of any given texture. 2D item textures will be copied over individually. Note that sprites for 3D items must be added manually.
+
+This fork keeps the original converter approach from [Kas-tle/java2bedrock.sh](https://github.com/Kas-tle/java2bedrock.sh) while updating the GitHub automation and repository flow for this fork.
 
 Your script and resource pack zip file must be in the same directory. Ensure that this zip file is properly setup. It should not have a root directory. Your resource pack must also be formatted correctly, to vanilla specifications. By default, this script will download the default assets in order to generate texture atlases in cases in which you have utilized those. If you wish to use different default assets, you may specify this at the beginning. The default pack will then be downloaded after your specified assets, with your specified assets taking precedence. As long as you provide valid JSON, the script should output something you can use.
 
